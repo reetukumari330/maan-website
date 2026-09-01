@@ -26,6 +26,55 @@
             }
         }
     </script>
+    <!-- Scroll animation styles (visual design unchanged, only reveal-on-scroll motion added) -->
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-fade {
+            opacity: 0;
+            transition: opacity 0.9s ease;
+        }
+
+        .reveal-fade.reveal-visible {
+            opacity: 1;
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-scale.reveal-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reveal-stagger.reveal-visible {
+            transition-delay: calc(var(--reveal-index, 0) * 90ms);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .reveal,
+            .reveal-fade,
+            .reveal-scale {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 
 </head>
 
@@ -114,10 +163,17 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                 <!-- Left Column: Content & Details -->
-                <div class="lg:col-span-6 space-y-8">
+                <div class="lg:col-span-6 space-y-8 reveal">
 
                     <!-- Breadcrumb / Badge -->
-
+                    <div
+                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100">
+                        <svg class="w-4 h-4 text-[#ec3136]" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <span>4.8 Rating (2,000+ Reviews)</span>
+                    </div>
 
                     <!-- Heading -->
                     <div class="space-y-3">
@@ -170,12 +226,22 @@
                         </div>
                     </div>
 
-
+                    <!-- CTA Action -->
+                    <div class="pt-4 flex items-center space-x-4">
+                        <a href="#booking"
+                            class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#ec3136] text-white font-medium text-sm hover:bg-[#d4292f] transition-all shadow-md shadow-red-500/20">
+                            Book Your Ride
+                        </a>
+                        <a href="#details"
+                            class="inline-flex items-center justify-center px-6 py-4 rounded-full bg-gray-100 text-gray-900 font-medium text-sm hover:bg-gray-200 transition-all">
+                            Explore Fleet
+                        </a>
+                    </div>
 
                 </div>
 
                 <!-- Right Column: Luxury Image Card -->
-                <div class="lg:col-span-6">
+                <div class="lg:col-span-6 reveal reveal-scale">
                     <div
                         class="relative rounded-3xl overflow-hidden bg-gray-100 shadow-xl border border-gray-100 group aspect-[4/3] lg:aspect-[16/11]">
                         <!-- Main Image -->
@@ -213,13 +279,919 @@
             </div>
         </div>
     </section>
+<section class="py-20 bg-white text-gray-950 overflow-hidden border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+            <span
+                class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
+                <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Elite Partnerships</span>
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
+                Trusted by the <span class="text-[#ec3136]">Best</span>
+            </h2>
+            <p class="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
+                Empowering diplomatic missions, global enterprises, and world-class organizations with premier mobility
+                solutions.
+            </p>
+        </div>
+    </div>
 
+    <div class="relative w-full overflow-hidden flex space-x-12 py-4">
+
+        <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
+        </div>
+        <div
+            class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
+        </div>
+
+        <div class="flex space-x-8 animate-marquee whitespace-nowrap items-center shrink-0">
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9.svg" alt="Client Logo"
+                    class="h-8 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                <span class="sr-only">US Embassy</span>
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
+                    class="h-7 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                    alt="Microsoft"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cisco"
+                    class="h-7 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+        </div>
+
+        <div class="flex space-x-8 animate-marquee whitespace-nowrap items-center shrink-0" aria-hidden="true">
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9.svg" alt="Client Logo"
+                    class="h-8 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
+                    class="h-7 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                    alt="Microsoft"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"
+                    class="h-6 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+            <div
+                class="bg-gray-50 border border-gray-200/80 rounded-2xl px-8 py-6 h-24 flex items-center justify-center min-w-[200px] hover:border-red-200 hover:shadow-md transition-all group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cisco"
+                    class="h-7 object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    @keyframes marquee {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .animate-marquee {
+        animation: marquee 35s linear infinite;
+    }
+
+    .animate-marquee:hover {
+        animation-play-state: paused;
+    }
+</style>
+    <!-- Car Rental Services Section -->
+
+    <section id="services" class="py-20 bg-white font-sans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-12">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 reveal">
+                <span
+                    class="text-brand-red text-xs font-bold uppercase tracking-widest bg-brand-lightRed px-3.5 py-1.5 rounded-full inline-block">
+                    Our Offerings
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                    What are the different car rental services in Delhi?
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                    Discover safe, reliable, and luxurious mobility options tailored around your exact travel needs.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Service 1: Outstation -->
+                <div class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md reveal reveal-stagger"
+                    style="--reveal-index:0;">
+                    <div>
+                        <div
+                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
+                            <i class="fa-solid fa-route"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Outstation - Round Trip & Oneway Drops</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            With our chauffeur-driven taxi rentals, you can explore fantastic tourist spots in and
+                            around
+                            Delhi. Our courteous chauffeurs handle the driving and navigating, allowing you to
+                            completely
+                            relax and enjoy your trip.
+                        </p>
+                    </div>
+                    <div
+                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
+                        <span>Flexible Packages</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 2: Airport Transfers -->
+                <div class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md reveal reveal-stagger"
+                    style="--reveal-index:1;">
+                    <div>
+                        <div
+                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
+                            <i class="fa-solid fa-plane-arrival"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Airport Transfers</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            We provide exceptional and affordable airport transportation services, ensuring seamless
+                            transfers to and from the airport. Bypass long taxi lines and guarantee a smooth transition
+                            to
+                            your desired destination.
+                        </p>
+                    </div>
+                    <div
+                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
+                        <span>24/7 Timely Pickup</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 3: Local Hourly Rentals -->
+                <div class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md reveal reveal-stagger"
+                    style="--reveal-index:2;">
+                    <div>
+                        <div
+                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
+                            <i class="fa-solid fa-city"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Local Hourly Rentals</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Indulge in local luxury car rentals for shopping sprees, historical tours, and business
+                            meetings. We also arrange large group reservations including buses and vans for weddings and
+                            corporate events.
+                        </p>
+                    </div>
+                    <div
+                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
+                        <span>Hourly & Event Fleet</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section
+        class="relative h-[40vh] max-w-7xl mx-auto my-12 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center reveal reveal-fade">
+
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="./images/Maanherovideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10"></div>
+
+        <div class="relative z-20 max-w-3xl mx-auto text-center px-4 sm:px-6">
+            <span
+                class="inline-block text-red-400 font-semibold uppercase tracking-widest text-xs sm:text-sm bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20 shadow-sm mb-4">
+                Travel with ECO Mobility
+            </span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-100 tracking-tight leading-tight mb-4">
+                Wherever you're headed, we'll get you there.
+            </h1>
+            <p class="text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-8">
+                Comfortable rides. Professional chauffeurs. Seamless journeys.
+            </p>
+            <div>
+                <a href="#booking"
+                    class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Book Your Ride
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================================
+     DESTINATIONS SECTION
+================================ -->
+    <section class="relative bg-white py-20 sm:py-24 lg:py-28 overflow-hidden">
+
+        <!-- Background Decoration -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-50/60 rounded-full blur-3xl -z-0"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gray-50 rounded-full blur-3xl -z-0"></div>
+
+        <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+
+            <!-- =================================
+         HEADER
+    ================================== -->
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 reveal">
+
+                <div class="max-w-3xl">
+
+                    <div class="inline-flex items-center gap-2 mb-5">
+                        <span class="w-8 h-[2px] bg-[#ec3136]"></span>
+
+                        <span class="text-[#ec3136] text-xs font-bold uppercase tracking-[0.22em]">
+                            Explore Destinations
+                        </span>
+                    </div>
+
+                    <h2
+                        class="text-4xl sm:text-5xl lg:text-[58px] font-bold tracking-[-0.04em] leading-[1.05] text-gray-950">
+                        Discover Delhi
+                        <span class="text-[#ec3136]">& Beyond</span>
+                    </h2>
+
+                    <p class="mt-6 text-base sm:text-lg text-gray-500 leading-8 max-w-2xl">
+                        From iconic monuments and vibrant markets to peaceful hill stations,
+                        discover unforgettable destinations with ECO Mobility.
+                    </p>
+
+                </div>
+
+                <a href="#"
+                    class="group inline-flex items-center gap-3 text-sm font-semibold text-gray-800 whitespace-nowrap">
+                    <span class="border-b border-gray-300 pb-1 group-hover:border-[#ec3136] transition">
+                        Explore all destinations
+                    </span>
+
+                    <span
+                        class="flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 group-hover:bg-[#ec3136] group-hover:border-[#ec3136] group-hover:text-white transition-all">
+                        <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14m-5-5 5 5-5 5" />
+                        </svg>
+                    </span>
+                </a>
+
+            </div>
+
+
+            <!-- =================================
+         FEATURED DELHI DESTINATIONS
+    ================================== -->
+
+            <div class="grid lg:grid-cols-2 gap-6 mb-24">
+
+                <!-- ================= RED FORT ================= -->
+                <a href="#"
+                    class="group relative h-[500px] sm:h-[560px] lg:h-[620px] rounded-[30px] overflow-hidden bg-gray-200 reveal reveal-scale">
+
+                    <img src="./images/pexels-ehaan-dewa-2149036462-33928936.jpg" alt="Red Fort"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+
+                    <!-- Top -->
+                    <div class="absolute top-6 left-6 right-6 flex justify-between items-start">
+
+                        <span
+                            class="px-4 py-2 rounded-full bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-gray-800">
+                            Delhi Heritage
+                        </span>
+
+                        <span
+                            class="flex items-center justify-center w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white">
+                            <svg class="w-4 h-4 group-hover:rotate-45 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 12h14m-5-5 5 5-5 5" />
+                            </svg>
+                        </span>
+
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
+
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-xs font-bold tracking-[0.25em] text-red-300">
+                                01
+                            </span>
+                            <span class="h-px w-8 bg-white/40"></span>
+                            <span class="text-xs uppercase tracking-widest text-white/60">
+                                Landmark
+                            </span>
+                        </div>
+
+                        <h3 class="text-3xl sm:text-4xl font-bold text-white">
+                            Red Fort
+                        </h3>
+
+                        <p class="mt-3 max-w-lg text-sm sm:text-base leading-7 text-white/70">
+                            A magnificent symbol of Mughal architecture and one of Delhi's
+                            most iconic historical landmarks.
+                        </p>
+
+                        <div class="mt-6 flex items-center gap-2 text-sm font-semibold text-white">
+                            Discover Red Fort
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14" />
+                            </svg>
+                        </div>
+
+                    </div>
+                </a>
+
+
+                <!-- ================= RIGHT COLUMN ================= -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
+
+                    <!-- CHANDNI CHOWK -->
+                    <a href="#"
+                        class="group relative h-[300px] sm:h-[350px] lg:h-[297px] rounded-[30px] overflow-hidden reveal reveal-stagger"
+                        style="--reveal-index:0;">
+
+                        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&q=85&w=1200"
+                            alt="Chandni Chowk"
+                            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
+
+                        <div class="absolute inset-0 p-7 flex flex-col justify-end">
+
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-xs font-bold text-red-300 tracking-[0.2em]">
+                                    02
+                                </span>
+
+                                <span class="text-[10px] uppercase tracking-widest text-white/60">
+                                    Experience
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                                Chandni Chowk
+                            </h3>
+
+                            <p class="mt-2 text-sm text-white/65 max-w-md">
+                                Experience the vibrant heart of Old Delhi.
+                            </p>
+
+                            <div class="mt-4 flex items-center gap-2 text-xs font-bold text-white">
+                                Explore
+                                <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                    <!-- QUTUB MINAR -->
+                    <a href="#"
+                        class="group relative h-[300px] sm:h-[350px] lg:h-[297px] rounded-[30px] overflow-hidden reveal reveal-stagger"
+                        style="--reveal-index:1;">
+
+                        <img src="./images/istockphoto-538685506-612x612.jpg" alt="Qutub Minar"
+                            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
+
+                        <div class="absolute inset-0 p-7 flex flex-col justify-end">
+
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="text-xs font-bold text-red-300 tracking-[0.2em]">
+                                    03
+                                </span>
+
+                                <span class="text-[10px] uppercase tracking-widest text-white/60">
+                                    Heritage
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                                Qutub Minar
+                            </h3>
+
+                            <p class="mt-2 text-sm text-white/65 max-w-md">
+                                Explore one of Delhi's most remarkable UNESCO landmarks.
+                            </p>
+
+                            <div class="mt-4 flex items-center gap-2 text-xs font-bold text-white">
+                                Explore
+                                <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </div>
+
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+            <!-- Hero Video Banner Section -->
+
+            <section class="relative py-20 bg-white text-gray-950 overflow-hidden border-t border-gray-100">
+                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+                        <div class="lg:col-span-6 space-y-8 reveal">
+                            <div class="space-y-4">
+                                <span
+                                    class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
+                                    <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor"
+                                        stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                    <span>Mann Fleet Mobile Experience</span>
+                                </span>
+                                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
+                                    Book Rides in Seconds. <span class="text-[#ec3136]">Track Live.</span>
+                                </h2>
+                                <p class="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
+                                    Smart travel, simplified. Manage your corporate rides, choose one-way or outstation
+                                    routes, and
+                                    monitor your chauffeur in real time directly from your phone.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-medium text-gray-800">
+                                <div
+                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
+                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
+                                    <span>Instant Smart Booking</span>
+                                </div>
+                                <div
+                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
+                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
+                                    <span>Live GPS Route Tracking</span>
+                                </div>
+                                <div
+                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
+                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
+                                    <span>Verified Professional Drivers</span>
+                                </div>
+                                <div
+                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
+                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
+                                    <span>24/7 Priority Concierge</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-wrap gap-4">
+                                <a href="https://play.google.com/store/apps/details?id=com.user.mannfleet"
+                                    class="inline-flex items-center space-x-3 bg-gray-950 hover:bg-gray-850 text-white px-6 py-3.5 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-800">
+                                    <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                                        <path
+                                            d="M3.609 1.814L13.792 12 3.61 22.186a1.5 1.5 0 01-.86-1.35V3.164a1.5 1.5 0 01.86-1.35zM15.207 13.414l2.121 2.121-10.293 5.943 8.172-8.064zM17.328 10.465l2.122 2.122-10.3 5.942 8.178-8.064zM15.207 10.586L7.035 2.522l10.293 5.943-2.121 2.121z" />
+                                    </svg>
+                                    <div class="text-left">
+                                        <p class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Get it
+                                            on</p>
+                                        <p class="text-sm font-semibold">Google Play</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://apps.apple.com/app/mannfleet"
+                                    class="inline-flex items-center space-x-3 bg-gray-950 hover:bg-gray-850 text-white px-6 py-3.5 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-800">
+                                    <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                                        <path
+                                            d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.31c.64-.78 1.08-1.86.96-2.94-.95.04-2.1.64-2.77 1.42-.59.68-1.11 1.78-.97 2.85 1.06.08 2.14-.51 2.78-1.33z" />
+                                    </svg>
+                                    <div class="text-left">
+                                        <p class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">
+                                            Download on the
+                                        </p>
+                                        <p class="text-sm font-semibold">App Store</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div class="lg:col-span-6 flex justify-center items-center relative reveal reveal-scale">
+
+                            <div
+                                class="absolute w-80 h-60 bg-red-500/10 rounded-full blur-3xl -top-10 -right-5 pointer-events-none">
+                            </div>
+
+                            <div class="relative flex flex-col sm:flex-row items-center justify-center gap-6">
+
+                                <div
+                                    class="w-[200px] sm:w-[280px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-gray-900 bg-black transform sm:-rotate-3 hover:rotate-0 transition-transform duration-500">
+                                    <img src="./images/WhatsApp Image 2026-09-01 at 3.43.10 PM (1).jpeg"
+                                        alt="Mann Fleet Booking App Interface" class="w-full h-auto object-cover">
+                                </div>
+
+                                <div
+                                    class="w-[20px] sm:w-[280px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-gray-900 bg-black transform sm:translate-y-8 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
+                                    <img src="./images/WhatsApp Image 2026-09-01 at 3.43.10 PM.jpeg"
+                                        alt="Mann Fleet Live Tracking App Interface" class="w-full h-auto object-cover">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="relative py-8 text-gray-900 overflow-hidden bg-white">
+                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+                    <div class="max-w-3xl space-y-4 mb-20 reveal">
+                        <div
+                            class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
+                            <svg class="w-4 h-4 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            <span>Why Mann Fleet Partners</span>
+                        </div>
+                        <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
+                            Engineered for Excellence, <span class="text-[#ec3136]">Driven by Trust</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 font-normal leading-relaxed">
+                            Experience uncompromising safety, rigorously vetted professional chauffeurs, and premier
+                            in-car
+                            amenities across 80+ cities in India.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <div class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 reveal reveal-stagger"
+                            style="--reveal-index:0;">
+                            <div class="space-y-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-950">Professional Chauffeurs</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        Every driver is rigorously vetted, licensed, and trained for a five-star journey
+                                        with
+                                        top-tier ratings.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-gray-200/60 flex items-center justify-between">
+                                <span class="text-xs font-bold text-gray-950">James M. (4.98 Rating)</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-full bg-red-50 text-[#ec3136] text-[10px] font-bold uppercase tracking-wider">4
+                                    MIN AWAY</span>
+                            </div>
+                        </div>
+
+                        <div class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 reveal reveal-stagger"
+                            style="--reveal-index:1;">
+                            <div class="space-y-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-950">Certified Quality</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        ISO-audited fleet with every vehicle thoroughly inspected before every single
+                                        ride for
+                                        maximum safety.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-8 pt-6 border-t border-gray-200/60 text-xs font-semibold text-[#ec3136] uppercase tracking-wider">
+                                100% Inspected Fleet
+                            </div>
+                        </div>
+
+                        <div class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 reveal reveal-stagger"
+                            style="--reveal-index:2;">
+                            <div class="space-y-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-950">24/7 Support</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        Real agents ready around the clock via call, live chat, or message for instant
+                                        assistance.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-8 pt-6 border-t border-gray-200/60 text-xs font-semibold text-[#ec3136] uppercase tracking-wider">
+                                Always Online
+                            </div>
+                        </div>
+
+                        <div class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 reveal reveal-stagger"
+                            style="--reveal-index:3;">
+                            <div class="space-y-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857A1 1 0 0015 9h-1a3 3 0 100 6h1a1 1 0 00.944-.714L18 9m4 12H2m2 0h16a2 2 0 002-2V9a2 2 0 00-2-2H2a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-950">In-Car Essentials</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        Everything you need for productivity and relaxation provided standard in every
+                                        single ride.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-gray-200/60 flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Wi-Fi</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Water</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Chargers</span>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2 lg:col-span-2 rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 reveal reveal-stagger"
+                            style="--reveal-index:4;">
+                            <div class="space-y-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-gray-950">80+ Cities Across India</h3>
+                                    <p class="text-gray-600 text-sm leading-relaxed max-w-xl">
+                                        Seamless connectivity for airport transfers, luxury hotel pickups, and bustling
+                                        city center
+                                        navigation nationwide.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-8 pt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-gray-600">
+                                <span>Airport Transfers</span>
+                                <span>•</span>
+                                <span>Hotel Pickups</span>
+                                <span>•</span>
+                                <span>City Tours</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =================================
+         BOTTOM CTA
+    ================================== -->
+
+
+
+        </div>
+    </section>
 
     <section class="relative py-20 bg-white text-gray-950 overflow-hidden border-t border-gray-100">
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-            <div class="max-w-3xl mb-16 space-y-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-end reveal">
+                <div class="lg:col-span-8 space-y-4">
+                    <span
+                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
+                        <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                        <span>Helpful Answers</span>
+                    </span>
+                    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
+                        Frequently Asked <span class="text-[#ec3136]">Questions</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
+                        Everything you need to know about our fleet, chauffeurs, and premier booking experience.
+                    </p>
+                </div>
 
+            </div>
+
+            <div class="space-y-4 max-w-7xl">
+
+                <details
+                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5 reveal reveal-stagger"
+                    style="--reveal-index:0;">
+                    <summary
+                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
+                        <span>How do I book a ride with Mann Fleet Partners?</span>
+                        <span
+                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
+                        You can effortlessly book via our mobile app, online booking portal, or by reaching out to our
+                        24/7
+                        concierge support team directly through phone or WhatsApp for personalized scheduling.
+                    </div>
+                </details>
+
+                <details
+                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5 reveal reveal-stagger"
+                    style="--reveal-index:1;">
+                    <summary
+                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
+                        <span>Are your chauffeurs vetted and verified?</span>
+                        <span
+                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
+                        Yes. Every chauffeur undergoes exhaustive background vetting, driving performance assessments,
+                        and
+                        specialized corporate etiquette training to guarantee absolute safety and comfort.
+                    </div>
+                </details>
+
+                <details
+                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5 reveal reveal-stagger"
+                    style="--reveal-index:2;">
+                    <summary
+                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
+                        <span>What in-car amenities are provided during the trip?</span>
+                        <span
+                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
+                        Every single ride comes standard with high-speed Wi-Fi, premium mineral water bottles, and
+                        multi-device fast chargers to keep you fully powered and connected on the go.
+                    </div>
+                </details>
+
+                <details
+                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5 reveal reveal-stagger"
+                    style="--reveal-index:3;">
+                    <summary
+                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
+                        <span>In which cities across India do you operate?</span>
+                        <span
+                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
+                        We deliver seamless corporate transit, airport transfers, and hotel pickups across more than 80
+                        major urban centers nationwide.
+                    </div>
+                </details>
+
+                <details
+                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5 reveal reveal-stagger"
+                    style="--reveal-index:4;">
+                    <summary
+                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
+                        <span>What is your cancellation or modification policy?</span>
+                        <span
+                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
+                        We offer highly flexible terms allowing you to modify or cancel your booking seamlessly prior to
+                        your designated pickup schedule without hidden friction.
+                    </div>
+                </details>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="relative py-20 bg-white text-gray-950 overflow-hidden border-t border-gray-100">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="max-w-3xl mb-16 space-y-4 reveal">
+                <span
+                    class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
+                    <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Instant Reservation</span>
+                </span>
                 <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
                     Book Your <span class="text-[#ec3136]">Luxury Ride</span>
                 </h2>
@@ -232,54 +1204,62 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-                <!-- Replaced Image Card with Key Statistics Grid -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div class="lg:col-span-5 space-y-6 reveal">
                     <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">20,000+</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">Vehicles
-                        </p>
-                    </div>
+                        class="group rounded-3xl bg-gray-50 border border-gray-200/80 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
 
-                    <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">70+</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">Fortune
-                            500
-                            Companies</p>
-                    </div>
+                        <div class="relative h-64 sm:h-72 overflow-hidden bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1000"
+                                alt="Mercedes Benz Luxury Fleet"
+                                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            </div>
 
-                    <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">75+</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">BSE 500
-                            customers</p>
-                    </div>
+                            <div
+                                class="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 text-white text-xs font-medium px-3 py-1.5 rounded-full">
+                                Featured Model
+                            </div>
 
-                    <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">5.23Mn</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">Trips in
-                            FY 26
-                        </p>
-                    </div>
+                            <div class="absolute bottom-4 left-6 right-6 text-white">
+                                <p class="text-xs text-red-500 font-semibold uppercase tracking-wider">Executive Class
+                                </p>
+                                <h3 class="text-2xl font-bold">Mercedes-Benz S-Class</h3>
+                            </div>
+                        </div>
 
-                    <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">130+</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">Cities in
-                            India & 150+ countries</p>
-                    </div>
+                        <div class="p-6 sm:p-8 space-y-6">
+                            <div class="grid grid-cols-3 gap-4 py-3 border-y border-gray-200/60 text-center">
+                                <div>
+                                    <p class="text-xs text-gray-500">Passengers</p>
+                                    <p class="text-sm font-semibold text-gray-900">4 Seats</p>
+                                </div>
+                                <div class="border-x border-gray-200/60">
+                                    <p class="text-xs text-gray-500">Luggage</p>
+                                    <p class="text-sm font-semibold text-gray-900">3 Bags</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Wi-Fi</p>
+                                    <p class="text-sm font-semibold text-gray-900">Included</p>
+                                </div>
+                            </div>
 
-                    <div
-                        class="bg-gray-50 border border-gray-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                        <p class="text-2xl sm:text-3xl font-extrabold text-[#ec3136] tracking-tight">30+</p>
-                        <p class="text-xs sm:text-sm font-medium text-gray-600 mt-1 uppercase tracking-wider">Years of
-                            experience</p>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-gray-500 block">Starting from</span>
+                                    <span class="text-xl font-bold text-gray-950">₹2,500 <span
+                                            class="text-xs font-normal text-gray-500">/ trip</span></span>
+                                </div>
+                                <span
+                                    class="inline-flex items-center text-xs font-semibold text-[#ec3136] bg-red-50 px-3.5 py-1.5 rounded-full border border-red-100">
+                                    Verified Chauffeur
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 bg-gray-50/80 border border-gray-200/80 rounded-3xl p-8 sm:p-10 shadow-sm">
+                <div
+                    class="lg:col-span-7 bg-gray-50/80 border border-gray-200/80 rounded-3xl p-8 sm:p-10 shadow-sm reveal">
                     <form action="#" method="POST" class="space-y-6">
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -350,1006 +1330,8 @@
 
         </div>
     </section>
-
-
-    <!-- Car Rental Services Section -->
-
-    <section id="services" class="py-20 bg-white font-sans">
-        <div class="max-w-7xl mx-auto px-4 sm:px-12">
-            <!-- Section Header -->
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span
-                    class="text-brand-red text-xs font-bold uppercase tracking-widest bg-brand-lightRed px-3.5 py-1.5 rounded-full inline-block">
-                    Our Offerings
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-                    What are the different car rental services in Delhi?
-                </h2>
-                <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    Discover safe, reliable, and luxurious mobility options tailored around your exact travel needs.
-                </p>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-                <!-- Service 1: Outstation -->
-                <div
-                    class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
-                            <i class="fa-solid fa-route"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Outstation - Round Trip & Oneway Drops</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            With our chauffeur-driven taxi rentals, you can explore fantastic tourist spots in and
-                            around
-                            Delhi. Our courteous chauffeurs handle the driving and navigating, allowing you to
-                            completely
-                            relax and enjoy your trip.
-                        </p>
-                    </div>
-                    <div
-                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
-                        <span>Flexible Packages</span>
-
-                    </div>
-                </div>
-
-                <!-- Service 2: Airport Transfers -->
-                <div
-                    class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
-                            <i class="fa-solid fa-plane-arrival"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Airport Transfers</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            We provide exceptional and affordable airport transportation services, ensuring seamless
-                            transfers to and from the airport. Bypass long taxi lines and guarantee a smooth transition
-                            to
-                            your desired destination.
-                        </p>
-                    </div>
-                    <div
-                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
-                        <span>24/7 Timely Pickup</span>
-
-                    </div>
-                </div>
-
-                <!-- Service 3: Local Hourly Rentals -->
-                <div
-                    class="bg-gray-50 hover:bg-brand-lightRed/40 border border-gray-100 hover:border-brand-red/30 p-8 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-md">
-                    <div>
-                        <div
-                            class="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-all">
-                            <i class="fa-solid fa-city"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Local Hourly Rentals</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Indulge in local luxury car rentals for shopping sprees, historical tours, and business
-                            meetings. We also arrange large group reservations including buses and vans for weddings and
-                            corporate events.
-                        </p>
-                    </div>
-                    <div
-                        class="pt-6 mt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-brand-red">
-                        <span>Hourly & Event Fleet</span>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <section
-        class="relative h-[55vh] max-w-7xl mx-auto my-12 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center">
-
-        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
-            <source src="./images/Maanherovideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10"></div>
-
-        <div class="relative z-20 max-w-3xl mx-auto text-center px-4 sm:px-6">
-            <span
-                class="inline-block text-red-400 font-semibold uppercase tracking-widest text-xs sm:text-sm bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20 shadow-sm mb-4">
-                Travel with ECO Mobility
-            </span>
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-100 tracking-tight leading-tight mb-4">
-                Wherever you're headed, we'll get you there.
-            </h1>
-            <p class="text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-8">
-                Comfortable rides. Professional chauffeurs. Seamless journeys.
-            </p>
-            <div>
-                <a href="#booking"
-                    class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                    Book Your Ride
-                </a>
-            </div>
-        </div>
-
-    </section>
-
-
-
-
-    <!-- ================================
-     DESTINATIONS SECTION
-================================ -->
-    <section class="relative bg-white py-10 sm:py-24 lg:py-8 overflow-hidden">
-
-        <!-- Background Decoration -->
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-50/60 rounded-full blur-3xl -z-0"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gray-50 rounded-full blur-3xl -z-0"></div>
-
-        <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
-
-                <div class="max-w-3xl">
-
-                    <div class="inline-flex items-center gap-2 mb-5">
-                        <span class="w-8 h-[2px] bg-[#ec3136]"></span>
-
-                        <span class="text-[#ec3136] text-xs font-bold uppercase tracking-[0.22em]">
-                            Explore Destinations
-                        </span>
-                    </div>
-
-                    <h2
-                        class="text-4xl sm:text-5xl lg:text-[58px] font-bold tracking-[-0.04em] leading-[1.05] text-gray-950">
-                        Discover Delhi
-                        <span class="text-[#ec3136]">& Beyond</span>
-                    </h2>
-
-                    <p class="mt-6 text-base sm:text-lg text-gray-500 leading-8 max-w-2xl">
-                        From iconic monuments and vibrant markets to peaceful hill stations,
-                        discover unforgettable destinations with ECO Mobility.
-                    </p>
-
-                </div>
-
-                <a href="#"
-                    class="group inline-flex items-center gap-3 text-sm font-semibold text-gray-800 whitespace-nowrap">
-                    <span class="border-b border-gray-300 pb-1 group-hover:border-[#ec3136] transition">
-                        Explore all destinations
-                    </span>
-
-                    <span
-                        class="flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 group-hover:bg-[#ec3136] group-hover:border-[#ec3136] group-hover:text-white transition-all">
-                        <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 12h14m-5-5 5 5-5 5" />
-                        </svg>
-                    </span>
-                </a>
-
-            </div>
-
-
-            <!-- =================================
-         FEATURED DELHI DESTINATIONS
-    ================================== -->
-
-            <div class="grid lg:grid-cols-2 gap-6 mb-24">
-
-                <!-- ================= RED FORT ================= -->
-                <a href="#"
-                    class="group relative h-[500px] sm:h-[560px] lg:h-[620px] rounded-[30px] overflow-hidden bg-gray-200">
-
-                    <img src="./images/pexels-ehaan-dewa-2149036462-33928936.jpg" alt="Red Fort"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-
-                    <!-- Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-
-                    <!-- Top -->
-                    <div class="absolute top-6 left-6 right-6 flex justify-between items-start">
-
-                        <span
-                            class="px-4 py-2 rounded-full bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-gray-800">
-                            Delhi Heritage
-                        </span>
-
-                        <span
-                            class="flex items-center justify-center w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white">
-                            <svg class="w-4 h-4 group-hover:rotate-45 transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h14m-5-5 5 5-5 5" />
-                            </svg>
-                        </span>
-
-                    </div>
-
-                    <!-- Bottom Content -->
-                    <div class="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
-
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-xs font-bold tracking-[0.25em] text-red-300">
-                                01
-                            </span>
-                            <span class="h-px w-8 bg-white/40"></span>
-                            <span class="text-xs uppercase tracking-widest text-white/60">
-                                Landmark
-                            </span>
-                        </div>
-
-                        <h3 class="text-3xl sm:text-4xl font-bold text-white">
-                            Red Fort
-                        </h3>
-
-                        <p class="mt-3 max-w-lg text-sm sm:text-base leading-7 text-white/70">
-                            A magnificent symbol of Mughal architecture and one of Delhi's
-                            most iconic historical landmarks.
-                        </p>
-
-                        <div class="mt-6 flex items-center gap-2 text-sm font-semibold text-white">
-                            Discover Red Fort
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14" />
-                            </svg>
-                        </div>
-
-                    </div>
-                </a>
-
-
-                <!-- ================= RIGHT COLUMN ================= -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
-
-                    <!-- CHANDNI CHOWK -->
-                    <a href="#"
-                        class="group relative h-[300px] sm:h-[350px] lg:h-[297px] rounded-[30px] overflow-hidden">
-
-                        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&q=85&w=1200"
-                            alt="Chandni Chowk"
-                            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
-
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
-
-                        <div class="absolute inset-0 p-7 flex flex-col justify-end">
-
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="text-xs font-bold text-red-300 tracking-[0.2em]">
-                                    02
-                                </span>
-
-                                <span class="text-[10px] uppercase tracking-widest text-white/60">
-                                    Experience
-                                </span>
-                            </div>
-
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white">
-                                Chandni Chowk
-                            </h3>
-
-                            <p class="mt-2 text-sm text-white/65 max-w-md">
-                                Experience the vibrant heart of Old Delhi.
-                            </p>
-
-                            <div class="mt-4 flex items-center gap-2 text-xs font-bold text-white">
-                                Explore
-                                <span class="group-hover:translate-x-1 transition-transform">→</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-
-                    <!-- QUTUB MINAR -->
-                    <a href="#"
-                        class="group relative h-[300px] sm:h-[350px] lg:h-[297px] rounded-[30px] overflow-hidden">
-
-                        <img src="./images/istockphoto-538685506-612x612.jpg" alt="Qutub Minar"
-                            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
-
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
-
-                        <div class="absolute inset-0 p-7 flex flex-col justify-end">
-
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="text-xs font-bold text-red-300 tracking-[0.2em]">
-                                    03
-                                </span>
-
-                                <span class="text-[10px] uppercase tracking-widest text-white/60">
-                                    Heritage
-                                </span>
-                            </div>
-
-                            <h3 class="text-2xl sm:text-3xl font-bold text-white">
-                                Qutub Minar
-                            </h3>
-
-                            <p class="mt-2 text-sm text-white/65 max-w-md">
-                                Explore one of Delhi's most remarkable UNESCO landmarks.
-                            </p>
-
-                            <div class="mt-4 flex items-center gap-2 text-xs font-bold text-white">
-                                Explore
-                                <span class="group-hover:translate-x-1 transition-transform">→</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                </div>
-
-            </div>
-            <!-- Hero Video Banner Section -->
-
-            <section class="relative py-20 bg-white text-gray-950 overflow-hidden border-t border-gray-100">
-                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-                        <div class="lg:col-span-6 space-y-8">
-                            <div class="space-y-4">
-                                <span
-                                    class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
-                                    <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor"
-                                        stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                    <span>Mann Fleet Mobile Experience</span>
-                                </span>
-                                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
-                                    Book Rides in Seconds. <span class="text-[#ec3136]">Track Live.</span>
-                                </h2>
-                                <p class="text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
-                                    Smart travel, simplified. Manage your corporate rides, choose one-way or outstation
-                                    routes, and
-                                    monitor your chauffeur in real time directly from your phone.
-                                </p>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-medium text-gray-800">
-                                <div
-                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
-                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
-                                    <span>Instant Smart Booking</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
-                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
-                                    <span>Live GPS Route Tracking</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
-                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
-                                    <span>Verified Professional Drivers</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200/60 shadow-sm">
-                                    <div class="w-2 h-2 rounded-full bg-[#ec3136]"></div>
-                                    <span>24/7 Priority Concierge</span>
-                                </div>
-                            </div>
-
-                            <div class="pt-2 flex flex-wrap gap-4">
-                                <a href="https://play.google.com/store/apps/details?id=com.user.mannfleet"
-                                    target="_blank"
-                                    class="inline-flex items-center space-x-3 bg-gray-950 hover:bg-gray-850 text-white px-6 py-3.5 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-800">
-                                    <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                                        <path
-                                            d="M3.609 1.814L13.792 12 3.61 22.186a1.5 1.5 0 01-.86-1.35V3.164a1.5 1.5 0 01.86-1.35zM15.207 13.414l2.121 2.121-10.293 5.943 8.172-8.064zM17.328 10.465l2.122 2.122-10.3 5.942 8.178-8.064zM15.207 10.586L7.035 2.522l10.293 5.943-2.121 2.121z" />
-                                    </svg>
-                                    <div class="text-left">
-                                        <p class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Get it
-                                            on</p>
-                                        <p class="text-sm font-semibold">Google Play</p>
-                                    </div>
-                                </a>
-
-                                <a href="https://apps.apple.com/us/app/mannfleet/id6770925992" target="_blank"
-                                    class="inline-flex items-center space-x-3 bg-gray-950 hover:bg-gray-850 text-white px-6 py-3.5 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-800">
-                                    <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                                        <path
-                                            d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.31c.64-.78 1.08-1.86.96-2.94-.95.04-2.1.64-2.77 1.42-.59.68-1.11 1.78-.97 2.85 1.06.08 2.14-.51 2.78-1.33z" />
-                                    </svg>
-                                    <div class="text-left">
-                                        <p class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">
-                                            Download on the
-                                        </p>
-                                        <p class="text-sm font-semibold">App Store</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <div class="lg:col-span-6 flex justify-center items-center relative">
-
-                            <div
-                                class="absolute w-80 h-60 bg-red-500/10 rounded-full blur-3xl -top-10 -right-5 pointer-events-none">
-                            </div>
-
-                            <div class="relative flex flex-col sm:flex-row items-center justify-center gap-6">
-
-                                <div
-                                    class="w-[200px] sm:w-[280px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-gray-900 bg-black transform sm:-rotate-3 hover:rotate-0 transition-transform duration-500">
-                                    <img src="./images/WhatsApp Image 2026-09-01 at 3.43.10 PM (1).jpeg"
-                                        alt="Mann Fleet Booking App Interface" class="w-full h-auto object-cover">
-                                </div>
-
-                                <div
-                                    class="w-[20px] sm:w-[280px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-gray-900 bg-black transform sm:translate-y-8 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
-                                    <img src="./images/WhatsApp Image 2026-09-01 at 3.43.10 PM.jpeg"
-                                        alt="Mann Fleet Live Tracking App Interface" class="w-full h-auto object-cover">
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="relative py-8 text-gray-900 overflow-hidden bg-white">
-                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                    <div class="max-w-3xl space-y-4 mb-20">
-                        <div
-                            class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
-                            <svg class="w-4 h-4 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                            <span>Why Mann Fleet Partners</span>
-                        </div>
-                        <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
-                            Engineered for Excellence, <span class="text-[#ec3136]">Driven by Trust</span>
-                        </h2>
-                        <p class="text-lg text-gray-600 font-normal leading-relaxed">
-                            Experience uncompromising safety, rigorously vetted professional chauffeurs, and premier
-                            in-car
-                            amenities across 80+ cities in India.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                        <div
-                            class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                            <div class="space-y-6">
-                                <div
-                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
-                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="space-y-2">
-                                    <h3 class="text-xl font-bold text-gray-950">Professional Chauffeurs</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">
-                                        Every driver is rigorously vetted, licensed, and trained for a five-star journey
-                                        with
-                                        top-tier ratings.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-8 pt-6 border-t border-gray-200/60 flex items-center justify-between">
-                                <span class="text-xs font-bold text-gray-950">James M. (4.98 Rating)</span>
-                                <span
-                                    class="px-2.5 py-1 rounded-full bg-red-50 text-[#ec3136] text-[10px] font-bold uppercase tracking-wider">4
-                                    MIN AWAY</span>
-                            </div>
-                        </div>
-
-                        <div
-                            class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                            <div class="space-y-6">
-                                <div
-                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
-                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="space-y-2">
-                                    <h3 class="text-xl font-bold text-gray-950">Certified Quality</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">
-                                        ISO-audited fleet with every vehicle thoroughly inspected before every single
-                                        ride for
-                                        maximum safety.
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                class="mt-8 pt-6 border-t border-gray-200/60 text-xs font-semibold text-[#ec3136] uppercase tracking-wider">
-                                100% Inspected Fleet
-                            </div>
-                        </div>
-
-                        <div
-                            class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                            <div class="space-y-6">
-                                <div
-                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
-                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="space-y-2">
-                                    <h3 class="text-xl font-bold text-gray-950">24/7 Support</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">
-                                        Real agents ready around the clock via call, live chat, or message for instant
-                                        assistance.
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                class="mt-8 pt-6 border-t border-gray-200/60 text-xs font-semibold text-[#ec3136] uppercase tracking-wider">
-                                Always Online
-                            </div>
-                        </div>
-
-                        <div
-                            class="rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                            <div class="space-y-6">
-                                <div
-                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
-                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857A1 1 0 0015 9h-1a3 3 0 100 6h1a1 1 0 00.944-.714L18 9m4 12H2m2 0h16a2 2 0 002-2V9a2 2 0 00-2-2H2a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="space-y-2">
-                                    <h3 class="text-xl font-bold text-gray-950">In-Car Essentials</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed">
-                                        Everything you need for productivity and relaxation provided standard in every
-                                        single ride.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-8 pt-6 border-t border-gray-200/60 flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Wi-Fi</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Water</span>
-                                <span
-                                    class="px-3 py-1 rounded-full bg-white text-gray-800 text-[11px] font-medium border border-gray-200 shadow-sm">Chargers</span>
-                            </div>
-                        </div>
-
-                        <div
-                            class="md:col-span-2 lg:col-span-2 rounded-3xl bg-gray-50 border border-gray-200/80 p-8 flex flex-col justify-between group hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                            <div class="space-y-6">
-                                <div
-                                    class="w-14 h-14 rounded-2xl bg-red-50 text-[#ec3136] flex items-center justify-center font-bold border border-red-100 shadow-sm">
-                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="space-y-2">
-                                    <h3 class="text-xl font-bold text-gray-950">80+ Cities Across India</h3>
-                                    <p class="text-gray-600 text-sm leading-relaxed max-w-xl">
-                                        Seamless connectivity for airport transfers, luxury hotel pickups, and bustling
-                                        city center
-                                        navigation nationwide.
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                class="mt-8 pt-6 border-t border-gray-200/60 flex items-center justify-between text-xs font-semibold text-gray-600">
-                                <span>Airport Transfers</span>
-                                <span>•</span>
-                                <span>Hotel Pickups</span>
-                                <span>•</span>
-                                <span>City Tours</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- =================================
-         BOTTOM CTA
-    ================================== -->
-
-
-
-        </div>
-    </section>
-    <section class="relative py-20 bg-white text-gray-950 overflow-hidden  border-gray-100">
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-
-                <div class="lg:col-span-6 w-full">
-                    <img src="./images/maan.png" alt="Professional Chauffeur Service" class="w-full h-auto">
-                </div>
-
-                <!-- Right Side: Content -->
-                <div class="lg:col-span-6 space-y-8">
-                    <span
-                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span>Legacy of Excellence</span>
-                    </span>
-
-                    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
-                        30+ Years of <span class="text-[#ec3136]">Trusted Service</span>
-                    </h2>
-
-                    <div class="space-y-5 text-base sm:text-lg text-gray-600 font-normal leading-relaxed">
-                        <p>
-                            With a pan-India presence in <strong class="text-gray-900">130+ cities</strong> through our
-                            own
-                            vehicles and vendors, we are deep rooted and have an extensive footprint that demonstrates
-                            our
-                            penetration into diverse regions across India.
-                        </p>
-                        <p>
-                            Our passion for excellence and dedication to exceeding the expectations of our clients makes
-                            us
-                            your trusted partner for all your transportation needs.
-                        </p>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-   
-        <section class="py-14 sm:py-16 lg:py-20 overflow-hidden">
-
-            <div class="max-w-7xl mx-auto px-5 sm:px-8">
-
-                <!-- Heading -->
-                <div class="text-center mb-10 sm:mb-12">
-                    <h2
-                        class="text-4xl sm:text-5xl lg:text-[50px] font-blod tracking-[-0.03em] text-[#102b46] leading-tight">
-                        Explore India On
-                        <span class="text-[#e31b23]">
-                            Wheels
-                        </span>
-                    </h2>
-                </div>
-
-
-                <!-- =========================================
-                 CITY BENTO GRID
-            ========================================== -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
-
-
-                    <!-- ================= MUMBAI ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-7 cursor-pointer">
-
-                        <img src="https://media.istockphoto.com/id/1247252296/photo/beautiful-gateway-of-india-near-taj-palace-hotel-on-the-mumbai-harbour-with-many-jetties-on.jpg?s=612x612&w=0&k=20&c=ywVEZmcvro1TDaYw1Z6uyn1yYlvLz57R6QlaUqOVHeM="
-                            alt="Mumbai" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <div class="absolute inset-0
-                               bg-gradient-to-t from-black/75
-                               via-black/15 to-transparent"></div>
-
-                        <div class="absolute bottom-7 left-7">
-                            <span class="text-2xl sm:text-3xl font-semibold
-                                   text-white tracking-tight drop-shadow-lg">
-                                Mumbai
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= VRINDAVAN ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-3 cursor-pointer">
-
-                        <img src="./images/9386541.jpg"
-                            alt="Vrindavan" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <div class="absolute inset-0
-                               bg-gradient-to-t from-black/70
-                               via-black/10 to-transparent"></div>
-
-                        <div class="absolute bottom-7 left-7">
-                            <span class="text-2xl sm:text-3xl font-semibold
-                                   text-white tracking-tight drop-shadow-lg">
-                                Vrindavan
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= RISHIKESH ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-2 cursor-pointer">
-
-                        <img src="https://media.istockphoto.com/id/2210922717/photo/lakshman-jhula-bridge-temple-and-ganges-river-at-sunset-rishikesh-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=9ukhwQzdKXuOtMUaWgY9XHYEVk9S3Ts_5UsSp3au0h0="
-                            alt="Rishikesh" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <div class="absolute inset-0
-                               bg-gradient-to-t from-black/65
-                               via-black/10 to-transparent"></div>
-
-                        <div class="absolute bottom-7 left-7">
-                            <span class="text-2xl sm:text-3xl font-semibold
-                                   text-white tracking-tight drop-shadow-lg">
-                                Rishikesh
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= JAIPUR ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-3 cursor-pointer">
-
-                        <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amFpcHVyfGVufDB8fDB8fHww"
-                            alt="Jaipur" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <div class="absolute inset-0
-                               bg-gradient-to-t from-black/70
-                               via-black/10 to-transparent"></div>
-
-                        <div class="absolute bottom-7 left-7">
-                            <span class="text-2xl sm:text-3xl font-semibold
-                                   text-white tracking-tight drop-shadow-lg">
-                                Jaipur
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= NAINITAL ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-7 cursor-pointer">
-
-                        <img src="https://images.unsplash.com/photo-1712201649803-ab1b13dae600?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8TmFpbml0YWx8ZW58MHx8MHx8fDA%3D"
-                            alt="Nainital" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <div class="absolute inset-0
-                               bg-gradient-to-t from-black/55
-                               via-black/10 to-transparent"></div>
-
-                        <div class="absolute bottom-7 left-7">
-                            <span class="text-2xl sm:text-3xl font-semibold
-                                   text-white tracking-tight drop-shadow-lg">
-                                Nainital
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= VIEW ALL CITIES ================= -->
-                    <div class="relative group overflow-hidden rounded-[20px]
-                           h-[250px] sm:h-[280px] lg:h-[250px]
-                           lg:col-span-2 cursor-pointer">
-
-                        <!-- Background Image -->
-                        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=700&q=85"
-                            alt="View All Cities" class="absolute inset-0 w-full h-full object-cover
-                               transition-transform duration-700
-                               group-hover:scale-105">
-
-                        <!-- Blue Overlay -->
-                        <div class="absolute inset-0
-                               bg-[#17618d]/80
-                               group-hover:bg-[#12557c]/90
-                               transition-colors duration-300"></div>
-
-                        <!-- Center Text -->
-                        <div class="absolute inset-0
-                               flex flex-col
-                               items-center
-                               justify-center
-                               text-center px-4">
-
-                            <span class="text-white text-xl sm:text-2xl
-                                   font-bold leading-tight tracking-wide">
-                                VIEW
-                                <br>
-                                ALL CITIES
-                            </span>
-
-                            <span class="mt-3 text-blue-100
-                                   text-xs sm:text-sm font-medium">
-                                Explore 120+ Cities
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-  
-
-    <section class="relative py-20 bg-white text-gray-950 overflow-hidden  border-gray-100">
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-end">
-                <div class="lg:col-span-8 space-y-4">
-                    <span
-                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-[#ec3136] text-xs font-semibold tracking-wide uppercase border border-red-100 shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-[#ec3136]" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
-                        </svg>
-                        <span>Helpful Answers</span>
-                    </span>
-                    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-950 leading-[1.15]">
-                        Frequently Asked <span class="text-[#ec3136]">Questions</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
-                        Everything you need to know about our fleet, chauffeurs, and premier booking experience.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="space-y-4 max-w-7xl">
-
-                <details
-                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5">
-                    <summary
-                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
-                        <span>How do I book a ride with Mann Fleet Partners?</span>
-                        <span
-                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div
-                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
-                        You can effortlessly book via our mobile app, online booking portal, or by reaching out to our
-                        24/7
-                        concierge support team directly through phone or WhatsApp for personalized scheduling.
-                    </div>
-                </details>
-
-                <details
-                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5">
-                    <summary
-                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
-                        <span>Are your chauffeurs vetted and verified?</span>
-                        <span
-                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div
-                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
-                        Yes. Every chauffeur undergoes exhaustive background vetting, driving performance assessments,
-                        and
-                        specialized corporate etiquette training to guarantee absolute safety and comfort.
-                    </div>
-                </details>
-
-                <details
-                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5">
-                    <summary
-                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
-                        <span>What in-car amenities are provided during the trip?</span>
-                        <span
-                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div
-                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
-                        Every single ride comes standard with high-speed Wi-Fi, premium mineral water bottles, and
-                        multi-device fast chargers to keep you fully powered and connected on the go.
-                    </div>
-                </details>
-
-                <details
-                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5">
-                    <summary
-                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
-                        <span>In which cities across India do you operate?</span>
-                        <span
-                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div
-                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
-                        We deliver seamless corporate transit, airport transfers, and hotel pickups across more than 80
-                        major urban centers nationwide.
-                    </div>
-                </details>
-
-                <details
-                    class="group rounded-2xl bg-gray-50/80 border border-gray-200/80 overflow-hidden transition-all duration-300 open:bg-white open:border-red-200 open:shadow-xl open:shadow-red-500/5">
-                    <summary
-                        class="flex items-center justify-between p-6 sm:p-7 cursor-pointer font-semibold text-lg text-gray-950 select-none group-hover:text-[#ec3136] transition-colors">
-                        <span>What is your cancellation or modification policy?</span>
-                        <span
-                            class="w-8 h-8 rounded-full bg-white border border-gray-200/80 flex items-center justify-center text-gray-500 group-open:rotate-180 group-open:bg-red-50 group-open:text-[#ec3136] group-open:border-red-200 transition-all duration-300 shadow-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div
-                        class="px-6 pb-6 sm:px-7 sm:pb-7 text-gray-600 text-sm sm:text-base leading-relaxed font-normal border-t border-gray-200/60 pt-4">
-                        We offer highly flexible terms allowing you to modify or cancel your booking seamlessly prior to
-                        your designated pickup schedule without hidden friction.
-                    </div>
-                </details>
-
-            </div>
-
-        </div>
-    </section>
-
-
-
-    <section
-        class="relative max-w-7xl mx-auto my-12 rounded-3xl overflow-hidden shadow-2xl bg-black text-white flex flex-col lg:flex-row items-center border border-zinc-800">
+        class="relative max-w-7xl mx-auto my-12 rounded-3xl overflow-hidden shadow-2xl bg-black text-white flex flex-col lg:flex-row items-center border border-zinc-800 reveal">
 
         <div
             class="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6 z-10 bg-gradient-to-r from-black via-zinc-950 to-transparent">
@@ -1502,6 +1484,29 @@
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+    </script>
+
+    <!-- Scroll-reveal animation logic (no UI/markup changes, only .reveal-visible toggling) -->
+    <script>
+        (function () {
+            const revealEls = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window) || revealEls.length === 0) {
+                revealEls.forEach(el => el.classList.add('reveal-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -60px 0px'
+            });
+            revealEls.forEach(el => observer.observe(el));
+        })();
     </script>
 
 </body>
